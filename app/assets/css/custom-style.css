@@ -1,0 +1,62 @@
+/*Change application background color */
+.msp-container-ui 
+{
+    background-color: #efeeee;
+}
+
+/*Change buttons style (except links) */
+.msp-container-ui .msp-ui-btn:not(.msp-ui-btn-link) {
+    box-shadow: 0px 1px 1px #666666;
+    border-radius: 5px;
+}
+/*Change payment button style */
+.msp-container-ui .msp-ui-btn-success {
+    background-color: #0361bf;
+    border: 1px solid #0361bf;
+    background-image: linear-gradient(to bottom,#0361bf,#2f7cde);
+}
+.msp-container-ui .msp-ui-btn-success:hover {
+    background-image: linear-gradient(to bottom,#5e5f63,#4073C2);
+}
+/*Change button links style */
+.msp-container-ui .msp-ui-btn.msp-ui-btn-link {
+    color: #008dcb;
+}
+
+/*Change payment method box style */
+.msp-container-ui .msp-ui-payment-methods .msp-ui-method-item
+{
+    background-color: white;
+    color: black;
+    font-weight: 500;
+}
+
+/*Change credit card payment container, payment result container and coupon payment container style */
+.msp-container-ui .msp-ui-payment-form
+{
+    background-color: #fafafa;
+    border: 2px solid yellowgreen;
+}
+
+/* Change inputs style */
+.msp-container-ui .msp-ui-form-field input.msp-ui-std-input, 
+.msp-container-ui .msp-ui-payment-form input.msp-ui-form-control
+{
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 0px rgba(50,50,50,0.22);
+    background-color: white;
+    border: 0;
+}
+
+.msp-container-ui .msp-ui-method-image-button
+{
+    background-color: white;
+}
+
+/* Change spinner style */
+.msp-container-ui .msp-ui-spinner {
+    border-top-color: #198fbf;
+    border-bottom-color: #198fbf;
+    border-left-color: white;
+    border-right-color: white;
+}

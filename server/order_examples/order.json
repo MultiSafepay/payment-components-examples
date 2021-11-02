@@ -1,0 +1,32 @@
+{
+    "type": "direct",
+    "order_id": "apitool_6609590",
+    "currency": "EUR",
+    "amount": "35060",
+    "description": "Test Order Description",
+    "payment_options": {
+        "notification_url": "https://example.com?type=notification",
+        "redirect_url": "https://example.com?type=redirect",
+        "cancel_url": "https://example.com?type=cancel"
+    },
+    "customer": {
+        "locale": "nl",
+        "ip_address": "185.49.169.194",
+        "forwarded_ip": "",
+        "first_name": "Testperson-nl",
+        "last_name": "Approved",
+        "address1": "Neherkade",
+        "address2": "",
+        "house_number": "XI",
+        "zip_code": "2521VA",
+        "city": "Gravenhage",
+        "state": "",
+        "country": "NL",
+        "birthday": "10071970",
+        "gender": "male",
+        "phone": "0612345678",
+        "email": "example@example.com",
+        "referrer": "https://example.com",
+        "user_agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
+    }
+}

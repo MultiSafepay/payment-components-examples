@@ -1,0 +1,12 @@
+{
+    "type": "direct",
+    "order_id": "apitool_2984762",
+    "currency": "EUR",
+    "amount": 1000,
+    "description": "product description",
+    "payment_options": {
+        "notification_url": "https://example.com?type=notification",
+        "redirect_url": "https://example.com?type=redirect",
+        "cancel_url": "https://example.com?type=cancel"
+    }
+}

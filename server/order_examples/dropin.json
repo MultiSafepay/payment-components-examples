@@ -1,0 +1,12 @@
+{
+    "type": "direct",
+    "order_id": "apitool_6609590",
+    "currency": "EUR",
+    "amount": "35060",
+    "description": "Test Order Description",
+    "payment_options": {
+        "notification_url": "https://example.com?type=notification",
+        "redirect_url": "https://example.com?type=redirect",
+        "cancel_url": "https://example.com?type=cancel"
+    }
+}
