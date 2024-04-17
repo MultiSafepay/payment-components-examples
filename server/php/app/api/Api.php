@@ -66,13 +66,11 @@ class Api
                 'api_key' => $this->settings['api_key']
             ]
         ];
-        if (in_array(
-            $method,
-            [
+        if (in_array($method, [
                 'POST', 'PATCH', 'PUT'
             ]
         )
-        ) {
+) {
             $req['json'] = $orderData;
         }
 
@@ -85,7 +83,6 @@ class Api
         } catch (GuzzleHttp\Exception\ClientException $e) {
             throw new \Exception($e->getResponse());
         }
-
         return json_decode($response->getBody()->getContents());
     }
 }

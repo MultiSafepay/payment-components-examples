@@ -1,11 +1,13 @@
 <?php
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require 'app/autoload.php';
 
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
-
-header('Content-Type: application/json; charset=utf-8');
 
 $route = array_filter(
     explode(
@@ -30,11 +32,10 @@ $postData = json_decode(file_get_contents('php://input'), true);
 try {
     $api = new \MultiSafepay\Api(getenv('API_ENDPOINT'), $config);
     switch($action) {
-    case 'apiToken';
-        $response = $api->getApiToken()->data;
-        break;
     case 'setOrder';
         $order = [];
+        //In this request, merchant integration should add the rest of ingformation of the order.
+        //For the example we load a static file under order_examples.
         if (!empty($postData['payment_data']['gateway'])) {
             $orderExample = '../order_examples/'.strtolower(
                 $postData['payment_data']['gateway']
@@ -57,6 +58,9 @@ try {
 
         $order['order_id'] = uniqid('payment-comp');
         $response = $api->setOrder($order);
+        break;
+    case 'apiToken';
+        $response = $api->getApiToken()->data;
         break;
     default;
         if (!empty($action)) {

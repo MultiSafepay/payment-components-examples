@@ -6,20 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" 
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Connect Components CSS -->
-    <link rel="stylesheet" 
-        charset="UTF-8"
-        href="https://testpay.multisafepay.com/sdk/components/v2/components.css">
-    
-    <link rel="stylesheet" 
-        href="../assets/css/app.css">
-    <script src="../../config.js"></script>    
+    <link rel="stylesheet" charset="UTF-8" href="https://testpay.multisafepay.com/sdk/components/v2/components.css">
 
-    <title>MultiSafepay Card Example</title>
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <title>MultiSafepay Ideal Example</title>
 </head>
 
 <body>
@@ -42,10 +36,7 @@
             <div class="col-md-6">
                 <div id="MSPPayment"></div>
                 <div class="text-center">
-                    <button 
-                        type="button" 
-                        id="paymentButton"
-                        class="btn btn-success btn-block btn-lg">
+                    <button type="button" id="paymentButton" class="btn btn-success btn-block btn-lg">
                         Pay
                     </button>
                 </div>
@@ -62,12 +53,30 @@
             </div>
         </div>
     </div>
-    <script charset="UTF-8"
-        src="https://testpay.multisafepay.com/sdk/components/v2/components.js"></script>
-    <script src="../assets/js/utils.js"></script>
-    <script src="../assets/js/api.js"></script>
-    <script src="app.js"></script>
-    
+    <script charset="UTF-8" src="https://testpay.multisafepay.com/sdk/components/v2/components.js"></script>
+    <script src="../assets/js/apiHelper.js"></script>
+    <script>
+        exampleConfigOrder = {
+            customer: {
+                country: 'NL',
+                locale: 'en',
+            },
+            currency: 'EUR',
+            amount: 10000,
+            payment_options: {
+                settings: {
+                    connect: {
+                        issuers_display_mode: '' //list, select, select-button (default)
+                    }
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            apiHelperJsLoader('ideal/app.js');
+        });
+    </script>
+
 </body>
 
 </html>

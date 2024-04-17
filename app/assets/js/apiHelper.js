@@ -1,22 +1,22 @@
-const serversUrl = {
-    PHP: '../../server/php/',
-    NODEJS: 'http://localhost:5000/'
-}
+/**
+ * Helper library to simulate webshop client requests to backend a backend api
+ * getApiToken
+ * setOrder
+ */
 
-const config = {
-    backendUrl: serversUrl[serverSettings.type],
-    orderExamplesPath: '../../server/order_examples/'
-}
 
-let exampleConfigOrder = {
-    customer: {
-        country: 'NL',
-        locale: 'en',
-    },
-    currency: 'EUR',
-    amount: 10000
-}
+const apiHelperJsLoader = (jsFilePath, timeout) => {
+    setTimeout(function() {
+        let js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = jsFilePath;
+        document.body.appendChild(js);
+    }, (timeout || 0));
+};
 
+//Load config and utils for demo
+apiHelperJsLoader("config.js");
+apiHelperJsLoader("/assets/js/utils.js");
 const headers = {
     headers : { 
         'Content-Type': 'application/json',
@@ -24,17 +24,19 @@ const headers = {
     }
 };
 
-console.log('config', config);
-console.log('exampleConfigOrder', exampleConfigOrder);
-
 const setPath = (path) => {
-    let endPoint = config.backendUrl + path;
+    if( envConfig.backendUrl == undefined) {
+        throw 'envConfig not defined';
+    }
+    console.log('config', envConfig);
+    let endPoint =  envConfig.backendUrl + path;
     return endPoint;
 }
 
 // Generic POST Helper
 const httpPost = (endpoint, data) =>
     fetch(`${setPath(endpoint)}`, {
+
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
@@ -67,4 +69,4 @@ const getApiToken = () =>
             return response.api_token;
         })
         .catch(console.error);
-    
+

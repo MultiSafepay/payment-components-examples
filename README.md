@@ -13,7 +13,7 @@ MultiSafepay is a collecting payment service provider which means we take care o
 
 ## Installation
 - Clone this git repository.
-- Follow instructions per programming language.
+- Follow instructions per programming language and app.
 
 ## Support
 If you have any issues, problems or questions you can create an issue on this repository or contact us at <a href="mailto:integration@multisafepay.com">integration@multisafepay.com</a>
