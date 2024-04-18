@@ -31,7 +31,7 @@
                     <a href="../">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    All Payment Methods
+                    Card Payment - Using Embed Mode
                 </li>
             </ol>
         </nav>
@@ -67,8 +67,14 @@
             currency: 'EUR',
             amount: 10000
         };
+        
+        exampleConfigOrder.template = {
+            settings: {
+                embed_mode: true
+            }
+        };
         document.addEventListener("DOMContentLoaded", () => {
-            apiHelperJsLoader("credit-card/app.js");
+            apiHelperJsLoader("card-payments-embed-mode/app.js");
         });
     </script>
 

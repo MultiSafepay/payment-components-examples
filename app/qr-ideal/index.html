@@ -1,8 +1,7 @@
-<!DOCTYPE html lang="en">
+<!doctype html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,13 +14,15 @@
 
     <link rel="stylesheet" href="../assets/css/app.css">
 
-    <title>MultiSafepay Card Example With jQuery</title>
+    <title>MultiSafepay Card Example</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">MultiSafepay Components Examples</a>
+            <a class="navbar-brand" href="#">
+                MultiSafepay Components Examples
+            </a>
         </nav>
         <br>
         <nav aria-label="breadcrumb">
@@ -30,7 +31,7 @@
                     <a href="../">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    All Payment Methods
+                    Ideal with QR
                 </li>
             </ol>
         </nav>
@@ -39,7 +40,7 @@
                 <div id="MSPPayment"></div>
                 <div class="text-center">
                     <button type="button" id="paymentButton" class="btn btn-success btn-block btn-lg">
-                        Pay by Credit Card
+                        Pay
                     </button>
                 </div>
             </div>
@@ -55,7 +56,6 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script charset="UTF-8" src="https://testpay.multisafepay.com/sdk/components/v2/components.js"></script>
     <script src="../assets/js/apiHelper.js"></script>
     <script>
@@ -65,11 +65,26 @@
                 locale: 'en',
             },
             currency: 'EUR',
-            amount: 10000
+            amount: 10000,
+            payment_options: {
+                settings: {
+                    connect: {
+                        qr: {
+                            enabled: true,
+                            autoload: true,
+                            qr_only: false,
+                            size: null
+                        },
+                        mobile_device: {
+                            app_pay_button_position: null,
+                            app_pay_button_position: null,
+                        }
+                    }
+                }
+            }
         };
-
         document.addEventListener("DOMContentLoaded", () => {
-            apiHelperJsLoader("credit-card-jquery/app.js");
+            apiHelperJsLoader("qr-ideal/app.js");
         });
     </script>
 

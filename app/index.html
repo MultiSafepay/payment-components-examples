@@ -2,14 +2,12 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pay.multisafepay.com/sdk/components/v1/components.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <title>MultiSafepay Components Examples</title>
 </head>
@@ -17,35 +15,112 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">MultiSafepay Components Examples</a>
+            <a class="navbar-brand" href="#">
+                MultiSafepay Payment components - Examples
+            </a>
+            <a target="_blank" href="https://docs.multisafepay.com/docs/payment-components">
+                View docs
+            </a>
         </nav>
         <br>
         <div class="d-block mt-10"></div>
         <div class="row">
             <div class="col-md-6">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="./credit-card">Credit Cards</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./ideal">iDEAL</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./all-payment-methods">All Payment Methods</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./all-payment-methods-inner">All Payment Methods Inner Button</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./credit-card-embed-mode">Credit Card Embed Mode</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./credit-card-jquery">Credit Cards jQuery</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./redirect-no-fields">No fields & Redirection - PayPal</a>
-                    </li>
-                </ul>
+                <div class="card">
+                    <div class="card-header">
+                        Single payment method
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./card-payments">
+                                    Card payments
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./card-payments-embed-mode">
+                                    Card Payment - Using Embed Mode
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./ideal">
+                                    iDEAL
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./card-payments-jquery">
+                                    Example usage using - jQuery
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./redirect-no-fields">
+                                    No fields & Redirection - PayPal
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix my-3"></div>
+                <div class="card">
+                    <div class="card-header">
+                        Misc
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./recurring-example">
+                                    Recurring / Tokenized payment example
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Multiple payment methods (Dropin)
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./all-payment-methods">
+                                    All Payment Methods - External Pay  Button
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./all-payment-methods-inner">
+                                    All Payment Methods - Inner Pay Button
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix my-3"></div>
+                <div class="card">
+                    <div class="card-header">
+                        QR Payments
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./qr-ideal">
+                                    Ideal with QR
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./qr-bancontact">
+                                    Bancontact with QR
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./qr-settings">
+                                    QR various settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

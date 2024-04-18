@@ -14,13 +14,15 @@
 
     <link rel="stylesheet" href="../assets/css/app.css">
 
-    <title>MultiSafepay Components Examples</title>
+    <title>MultiSafepay Card Example</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">MultiSafepay Components Examples</a>
+            <a class="navbar-brand" href="#">
+                MultiSafepay Components Examples
+            </a>
         </nav>
         <br>
         <nav aria-label="breadcrumb">
@@ -29,13 +31,18 @@
                     <a href="../">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    All Payment Methods Inner
+                    Bancontact with QR
                 </li>
             </ol>
         </nav>
         <div class="row">
             <div class="col-md-6">
                 <div id="MSPPayment"></div>
+                <div class="text-center">
+                    <button type="button" id="paymentButton" class="btn btn-success btn-block btn-lg">
+                        Pay
+                    </button>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="debug-container">
@@ -54,17 +61,33 @@
     <script>
         exampleConfigOrder = {
             customer: {
-                country: 'NL',
+                country: 'BE',
                 locale: 'en',
             },
             currency: 'EUR',
-            amount: 10000
+            amount: 10000,
+            payment_options: {
+                settings: {
+                    connect: {
+                        qr: {
+                            enabled: true,
+                            autoload: true,
+                            qr_only: false,
+                            size: null
+                        },
+                        mobile_device: {
+                            app_pay_button_position: null,
+                            app_pay_button_position: null,
+                        }
+                    }
+                }
+            }
         };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            apiHelperJsLoader('all-payment-methods-inner/app.js');
+        document.addEventListener("DOMContentLoaded", () => {
+            apiHelperJsLoader("qr-bancontact/app.js");
         });
     </script>
+
 </body>
 
 </html>

@@ -7,21 +7,34 @@ getApiToken().then(apiToken => {
     });
 
     const paymentButton = document.querySelector('#paymentButton');
-    /* Enabling line below, payment button will be disabled until data is filled correctly */
-    paymentButton.setAttribute('disabled', '');
+    
+    setButtonStatus(paymentButton);
 
     multiSafepay.init('payment', {
         container: '#MSPPayment',
-        gateway: 'CREDITCARD',
+        gateway: 'MISTERCASH',
         onError: state => {
             console.log('onError', state);
         },
-        /* Enabling line below, payment button will be disabled until data is filled correctly */
+        onEvent: state => {
+            console.log('onEvent', state);
+        },
+        onGetQR: state => {
+            console.log('onGetQR', state);
+            setOrder(state.orderData).then(response => {
+                console.log('setOrder onGetQR - Response', response);
+                multiSafepay.setQR({
+                    order: response.data
+                });
+                setButtonStatus(paymentButton);
+            });
+        },
+        
         onValidation: state => {
             if(state.valid) {
-                paymentButton.removeAttribute('disabled');
+                setButtonStatus(paymentButton);
             } else {
-                paymentButton.setAttribute('disabled', '');
+                setButtonStatus(paymentButton, true);
             }
         },
         onLoad: state => {
@@ -35,16 +48,16 @@ getApiToken().then(apiToken => {
             console.log(errors);
             return false;
         }
-        paymentButton.setAttribute('disabled','');
+        setButtonStatus(paymentButton, true);
         setOrder(multiSafepay.getOrderData()).then(response => {
             if(!response || !response.success) {
-                paymentButton.removeAttribute('disabled');
                 console.log(response);
             } else {
                 multiSafepay.init('redirection', {
                     order: response.data
                 });
             }
+            setButtonStatus(paymentButton);
         });
     });
 });

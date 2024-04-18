@@ -2,6 +2,7 @@
  * Helper library to simulate webshop client requests to backend a backend api
  * getApiToken
  * setOrder
+ * getRecurringTokens
  */
 
 
@@ -50,8 +51,22 @@ const setOrder = (orderData) => {
 
     return httpPost('setOrder', orderData)
         .then(response => {
+            console.log('setOrder', response);
             if (response.error) {
-                throw 'Error creating order';
+                throw 'Error - setOrder';
+            }
+            debugResponse(response);
+            return response;
+        })
+        .catch(console.error);
+}
+
+const getRecurringTokens = () => {
+    return httpPost('getRecurringTokens', {})
+        .then(response => {
+            console.log('getRecurringTokens', response);
+            if (response.error) {
+                throw 'Error - getRecurringTokens';
             }
             debugResponse(response);
             return response;
@@ -62,8 +77,9 @@ const setOrder = (orderData) => {
 const getApiToken = () =>
     httpPost('apiToken')
         .then(response => {
+            console.log('getApiToken', response);
             if (response.error) {
-                throw 'Invalid api token';
+                throw 'Error - apiToken';
             }
             debugResponse(response);
             return response.api_token;

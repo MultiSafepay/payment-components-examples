@@ -34,12 +34,12 @@ try {
     switch($action) {
     case 'setOrder';
         $order = [];
-        //In this request, merchant integration should add the rest of ingformation of the order.
-        //For the example we load a static file under order_examples.
+        //In this request, merchant integration should add the rest of information of the order.
+        //For the example we load a static file under order_examples folder.
+        //$postData contains payment_data and order information from components.
         if (!empty($postData['payment_data']['gateway'])) {
-            $orderExample = '../order_examples/'.strtolower(
-                $postData['payment_data']['gateway']
-            ).'.json';
+
+            $orderExample = '../order_examples/'.strtolower($postData['payment_data']['gateway']).'.json';
             if (!file_exists($orderExample)) {
                 $orderExample = null;
             }
@@ -56,11 +56,23 @@ try {
             );
         }
 
-        $order['order_id'] = uniqid('payment-comp');
+        $order['order_id'] = uniqid('payment-comp'); //Set webshop order id
         $response = $api->setOrder($order);
         break;
     case 'apiToken';
         $response = $api->getApiToken()->data;
+        break;
+    case 'getRecurringTokens';
+        $input = [
+            'customer' => [
+                'reference' => 'shopper-456' //Customer reference should be taken from DB or user session, not exposed to the browser or client.
+            ]
+        ];
+        $recurring = $api->getRecurringTokens($input)->data;
+        $response = [
+            'model' => 'cardOnFile',
+            'tokens' => (!empty($recurring->tokens) ? $recurring->tokens : [])
+        ];
         break;
     default;
         if (!empty($action)) {

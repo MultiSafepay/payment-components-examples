@@ -1,8 +1,9 @@
 getApiToken().then(apiToken => {
+
     const multiSafepay = new MultiSafepay({
-        env: envConfig.ENV,
-        apiToken: apiToken,
-        order: exampleConfigOrder
+        env : envConfig.ENV,
+        apiToken : apiToken,
+        order : exampleConfigOrder
     });
 
     const paymentButton = document.querySelector('#paymentButton');
@@ -10,18 +11,25 @@ getApiToken().then(apiToken => {
 
     multiSafepay.init('payment', {
         container: '#MSPPayment',
-        gateway: 'IDEAL',
-        onSelect: state => {
-            console.log('onSelect', state);
-            setButtonStatus(paymentButton);
+        gateway: 'CREDITCARD',
+        onError: state => {
+            console.log('onError', state);
         },
         onEvent: state => {
             console.log('onEvent', state);
         },
-        onError: state => {
-            console.log('onError', state);
+        /* Enabling line below, payment button will be disabled until data is filled correctly */
+        onValidation: state => {
+            if(state.valid) {
+                setButtonStatus(paymentButton);
+            } else {
+                setButtonStatus(paymentButton, true);
+            }
+        },
+        onLoad: state => {
+            console.log('Component mounted', state);
         }
-    });
+    }); 
 
     paymentButton.addEventListener('click', e => {
         if (multiSafepay.hasErrors()) {
@@ -31,16 +39,14 @@ getApiToken().then(apiToken => {
         }
         setButtonStatus(paymentButton, true);
         setOrder(multiSafepay.getOrderData()).then(response => {
-            setButtonStatus(paymentButton);
-
-            if (!response.success) {
-                paymentButton.removeAttribute('disabled');
+            if(!response || !response.success) {
                 console.log(response);
             } else {
                 multiSafepay.init('redirection', {
                     order: response.data
                 });
             }
+            setButtonStatus(paymentButton);
         });
     });
-}); 
+});

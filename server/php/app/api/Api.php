@@ -34,7 +34,11 @@ class Api
      */
     public function setOrder($orderData)
     {
-        return $this->sendRequest('POST', 'json/orders', $orderData);
+        return $this->sendRequest(
+            'POST', 
+            'json/orders',
+            $orderData
+        );
     }
     
     /**
@@ -45,6 +49,23 @@ class Api
     public function getApiToken()
     {
         return $this->sendRequest('GET', 'json/auth/api_token');
+    }
+
+    /**
+     * Obtain the list of tokens by customer reference
+     *
+     * @return object tokens array or error response.
+     */
+    public function getRecurringTokens($orderData)
+    {
+        if(empty($orderData['customer']['reference'])) {
+            throw new \Exception('Required customer reference');
+        }
+        
+        return $this->sendRequest(
+            'GET', 
+            'json/recurring/'.$orderData['customer']['reference']
+        );
     }
     
     /**

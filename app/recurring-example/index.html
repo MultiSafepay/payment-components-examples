@@ -31,7 +31,7 @@
                     <a href="../">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    All Payment Methods
+                    Recurring / Tokenized payment example
                 </li>
             </ol>
         </nav>
@@ -67,14 +67,8 @@
             currency: 'EUR',
             amount: 10000
         };
-        
-        exampleConfigOrder.template = {
-            settings: {
-                embed_mode: true
-            }
-        };
         document.addEventListener("DOMContentLoaded", () => {
-            apiHelperJsLoader("credit-card-embed-mode/app.js");
+            apiHelperJsLoader("recurring-example/app.js");
         });
     </script>
 

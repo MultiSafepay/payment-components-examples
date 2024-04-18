@@ -17,3 +17,16 @@ function debugResponse(response) {
 function debugState(state) {
     debugStateContainer.innerText = toJsonString(state);
 }
+
+const setButtonStatus = (button, disabled) => {
+    if(!button) {
+        return;
+    } 
+    button.removeAttribute('disabled');
+    if(disabled) {
+        button.setAttribute("disabled", "disabled");
+    } else {
+        button.removeAttribute('disabled');
+    }
+    return button;
+}

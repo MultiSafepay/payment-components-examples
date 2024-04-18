@@ -15,3 +15,4 @@ run NODE server or using your localhost with the following command
 ```
 npm run start
 ```
+By default will run under localhost:5000

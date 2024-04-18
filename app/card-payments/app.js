@@ -1,14 +1,13 @@
 getApiToken().then(apiToken => {
 
-    const multiSafepay = new MultiSafepay({
+    const multiSafepay  = new MultiSafepay({
         env : envConfig.ENV,
         apiToken : apiToken,
         order : exampleConfigOrder
     });
 
     const paymentButton = document.querySelector('#paymentButton');
-    /* Enabling line below, payment button will be disabled until data is filled correctly */
-    paymentButton.setAttribute('disabled', '');
+    setButtonStatus(paymentButton);
 
     multiSafepay.init('payment', {
         container: '#MSPPayment',
@@ -16,12 +15,15 @@ getApiToken().then(apiToken => {
         onError: state => {
             console.log('onError', state);
         },
-        /* Enabling line below, payment button will be disabled until data is filled correctly */
+        onEvent: state => {
+            console.log('onEvent', state);
+        },
         onValidation: state => {
             if(state.valid) {
                 paymentButton.removeAttribute('disabled');
+                setButtonStatus(paymentButton);
             } else {
-                paymentButton.setAttribute('disabled', '');
+                setButtonStatus(paymentButton, true);
             }
         },
         onLoad: state => {
@@ -35,16 +37,16 @@ getApiToken().then(apiToken => {
             console.log(errors);
             return false;
         }
-        paymentButton.setAttribute('disabled','');
+        setButtonStatus(paymentButton, true);
         setOrder(multiSafepay.getOrderData()).then(response => {
             if(!response || !response.success) {
-                paymentButton.removeAttribute('disabled');
                 console.log(response);
             } else {
                 multiSafepay.init('redirection', {
                     order: response.data
                 });
             }
+            setButtonStatus(paymentButton);
         });
     });
 });

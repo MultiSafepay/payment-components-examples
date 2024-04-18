@@ -13,6 +13,9 @@ var App = {
             App.multiSafepay.init('payment', {
                 container: '#MSPPayment',
                 gateway: 'CREDITCARD',
+                onEvent: state => {
+                    console.log('onEvent', state);
+                },
                 onError: function( state ){
                     console.log('onError', state);
                 }
@@ -20,8 +23,9 @@ var App = {
         });
 
         this.paymentButton.addEventListener('click', function(e) {
+            setButtonStatus(App.paymentButton);
             if (App.multiSafepay.hasErrors()) {
-                let errors = multiSafepay.getErrors();
+                let errors = App.multiSafepay.getErrors();
                 console.log(errors);
                 return false;
             }
@@ -38,6 +42,7 @@ var App = {
                             order: res.data
                         });
                     }
+                    setButtonStatus(App.paymentButton);
                 }
             });
         });
