@@ -10,7 +10,7 @@ pip install python-dotenv
 
 Copy default.env and rename to .env . Set the propper environment variables.
 
-run PHP server or using your localhost
+run server
 ```
-php -S localhost:5000
+py app.py
 ```
