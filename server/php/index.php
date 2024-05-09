@@ -56,7 +56,7 @@ try {
             );
         }
 
-        $order['order_id'] = uniqid('payment-comp'); //Set webshop order id
+        $order['order_id'] = uniqid('payment-comp-php'); //Set webshop order id
         $response = $api->setOrder($order);
         break;
     case 'apiToken';

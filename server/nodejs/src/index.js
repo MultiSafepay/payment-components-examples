@@ -66,7 +66,7 @@ app.post('/setOrder', (req, res) => {
             orderData = require(orderExampleFile);
         }
     }
-    orderData['order_id'] = generateOrderId('payment-comp');
+    orderData['order_id'] = generateOrderId('payment-comp-node');
     const params = { ...req.body, ...orderData };
     sendRequest('POST', 'json/orders', params).then((apiResponse) => {
         res.send(JSON.stringify(apiResponse));
@@ -74,7 +74,8 @@ app.post('/setOrder', (req, res) => {
 });
 
 app.post('/getRecurringTokens', (req, res) => {
-    let customerReference = 'shopper-456'; //Customer reference should be taken from DB or user session, not exposed to the browser or client.
+    //Customer reference should be taken from DB or user session, not exposed to the browser or client.
+    let customerReference = 'shopper-456';
     sendRequest('GET', 'json/recurring/' + customerReference).then((apiResponse) => {
         let result = {
             model: 'cardOnFile',
