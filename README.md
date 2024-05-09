@@ -22,7 +22,7 @@ If you have any issues, problems or questions you can create an issue on this re
 If you spot mistakes or want to contribute in improving this wrapper, feel free to [create pull requests](https://github.com/MultiSafepay/payment-components-examples/pulls)
 
 ## API Documentation
-[Click here](https://docs.multisafepay.com/api/) for the MultiSafepay API documentation.
+[Click here](https://docs.multisafepay.com/reference/introduction) for the MultiSafepay API documentation.
 
 ## License
 [MIT License](https://github.com/MultiSafepay/payment-components-examples/blob/master/LICENSE)
