@@ -19,15 +19,26 @@ Examples how to initialize the components and use different settings and methods
 
 ***Run the examples***
 
-1) Run available servers Php, Node, ...(see `server` folder)
-Default will run in port 5000
+1) Run available servers Php, Node, Python ...(see `server` folder)
+Default servers will run in port 5000
 
-2) Edit config.js to match the backend server url, environment, etc...
+2) `cd app` folder and Edit config.js to match the backend server url, environment, etc...
 
-3) Access the examples running:
+3) Run local static server:
 
+**PHP**
 ```
 php -S localhost:5001
+```
+
+**Node**
+```
+npx http-server -a localhost -p 5001
+```
+
+**Python**
+```
+py -m http.server 5001
 ```
 open in browser
 
@@ -38,3 +49,5 @@ or run directly in your server
 
 http://localhost/index.html
 https://your-server-url.com/index.html
+
+*Notice: might not work running locally in filesystem  
